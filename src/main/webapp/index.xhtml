@@ -43,7 +43,7 @@
                     <p:outputLabel id="viewTitle" value="#{postView.selectedPost.id}" />
 
                     <h:outputLabel for="viewContent" value="Contenido:" />
-                    <p:outputLabel id="viewContent" value="#{postView.selectedPost.content}" />
+                    <p:outputLabel id="viewContent" value="#{postView}" />
                 </h:panelGrid>
                 <p:commandButton value="Cerrar" onclick="PF('viewPostDialog').hide();" type="button" />
             </p:dialog>
