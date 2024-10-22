@@ -9,48 +9,74 @@
 
 <h:head>
     <title>Post And Comments</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="icon" type="icon" href="images/icon.png" />
-
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <link rel="icon" type="icon" href="images/icon.png"/>
 </h:head>
 <h:body>
 
     <div class="header">
-    <div class="logo">
-        <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
-    </div>
-
+        <div class="logo">
+            <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
+        </div>
     </div>
     <div class="container">
 
         <h:form>
-            <p:panel header="POSTS" toggleable="true">
-
+            <p:panel header="Posts" toggleable="true">
                 <p:dataList value="#{postView.posts}" var="post">
                     <p:outputPanel>
-                        <p:commandLink value="#{post.id}"
+                        <p:commandLink value="#{post.title}"
                                        action="#{postView.setSelectedPost(post)}"
                                        onclick="PF('viewPostDialog').show(); return false;"/>
                     </p:outputPanel>
                 </p:dataList>
             </p:panel>
 
-
             <p:dialog header="Detalles de Publicación" widgetVar="viewPostDialog" modal="true">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="viewTitle" value="Título:" />
+                    <p:outputLabel id="viewTitle" value="#{postView.selectedPost.title}" />
 
-                    <p:outputLabel id="viewTitle" value="#{postView.selectedPost.id}" />
+                    <h:outputLabel for="viewAutor" value="Autor:" />
+                    <p:outputLabel id="viewAutor" value="#{postView.selectedPost.autor}" />
 
                     <h:outputLabel for="viewContent" value="Contenido:" />
-                    <p:outputLabel id="viewContent" value="#{postView}" />
+                    <p:outputLabel id="viewContent" value="#{postView.selectedPost.content}" />
+
+                    <h:outputLabel for="viewDate" value="Fecha de Publicación:" />
+                    <p:outputLabel id="viewDate" value="#{postView.selectedPost.date}" />
+
+            <!--
+            <h:outputLabel value="Comentarios:" />
+            <p:dataTable value="#{postView.selectedPost.comments}" var="comment">
+                <p:column>
+                    <h:outputText value="#{comment.autor}:" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="#{comment.content}" />
+                </p:column>
+                <p:column>
+                    <h:outputText value="Likes: #{comment.likes}" />
+                </p:column>
+            </p:dataTable>
+
+            <h:outputLabel for="newComment" value="Añadir Comentario:" />
+            <p:inputTextarea id="newComment" value="#{commentView.commentsDTO.content}" required="true" />
+
+            <h:outputLabel for="commentAutor" value="Tu nombre:" />
+            <p:inputText id="commentAutor" value="#{commentView.commentsDTO.autor}" required="true" />
+
+            <p:commandButton value="Comentar"
+                             action="#{commentView.addComment(postView.selectedPost.id)}"
+                             />
+         -->
                 </h:panelGrid>
-                <p:commandButton value="Cerrar" onclick="PF('viewPostDialog').hide();" type="button" />
             </p:dialog>
+
+
             <p:commandButton value="Crear Publicación" icon="pi pi-plus"
                              onclick="PF('createPostDialog').show(); return false;" />
 
-            <!-- Dialog para crear nueva publicación -->
             <p:dialog header="Crear Publicación" widgetVar="createPostDialog" modal="true">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="title" value="Título:" />
@@ -65,21 +91,14 @@
                 </h:panelGrid>
 
             </p:dialog>
-
         </h:form>
-
-
-
     </div>
-
-
 
     <div class="footer">
         <p>
             &copy; 2024 PostAndComments&nbsp; &nbsp;Programación 2&nbsp; &nbsp;Universidad
             El Bosque
         </p>
-
     </div>
 </h:body>
 </html>

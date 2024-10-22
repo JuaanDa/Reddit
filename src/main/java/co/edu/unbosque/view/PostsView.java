@@ -16,9 +16,9 @@ import java.util.List;
 @RequestScoped
 public class PostsView implements Serializable {
     private ArrayList<PostsDTO> posts;
+    private PostsDTO selectedPost;
     @Inject
     private PostsService postsService;
-    private PostsDTO selectedPost;
 
 
     @PostConstruct
@@ -42,18 +42,18 @@ public class PostsView implements Serializable {
 */
     }
 
-    public List<PostsDTO> getPosts() {
-        return posts;
-    }
-
     public PostsDTO getSelectedPost() {
         return selectedPost;
     }
 
     public void setSelectedPost(PostsDTO selectedPost) {
-        this.selectedPost =  postsService.getPosts(selectedPost.getId());
-        System.out.println("Selected Post: " + this.selectedPost); // Check what gets logged
-        System.out.println("Método setSelectedPost invocado"); // Agrega este println
-
+        this.selectedPost = selectedPost;
     }
+
+
+    public List<PostsDTO> getPosts() {
+        return posts;
+    }
+
+
 }
