@@ -1,0 +1,63 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    background-color: #BFBBB8;
+    color: #dadada;
+    padding: 0px 200px;
+    border-bottom: 3px solid #324a5e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+}
+
+.footer {
+    border-top: 3px solid #000000;
+    background-color: #2B7B8C;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+.footer p {
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+
+.container{
+    position: relative;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
