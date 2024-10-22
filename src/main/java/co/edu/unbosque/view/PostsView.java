@@ -20,26 +20,11 @@ public class PostsView implements Serializable {
     @Inject
     private PostsService postsService;
 
-
     @PostConstruct
     public void init() {
 
         posts = (ArrayList<PostsDTO>) postsService.getAllPosts();
-        //System.out.println("Posts cargados: " + posts.size());
 
-        // Agregar dos posts precargados
-/*
-            PostsDTO post1 = new PostsDTO();
-            post1.setTitle("Primera Publicación");
-            post1.setContent("Contenido de la primera publicación.");
-
-            PostsDTO post2 = new PostsDTO();
-            post2.setTitle("Segunda Publicación");
-            post2.setContent("Contenido de la segunda publicación.");
-
-            posts.add(post1);
-            posts.add(post2);
-*/
     }
 
     public PostsDTO getSelectedPost() {
@@ -48,6 +33,7 @@ public class PostsView implements Serializable {
 
     public void setSelectedPost(PostsDTO selectedPost) {
         this.selectedPost = selectedPost;
+
     }
 
 

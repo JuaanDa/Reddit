@@ -30,6 +30,20 @@ body {
 .logo img {
     height: 80px;
 }
+.ui-button-raised {
+    background-color: #324a5e; /* Cambia el color de fondo */
+    color: white; /* Cambia el color del texto */
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.ui-button-raised:hover {
+    background-color: #BFBBB8; /* Color de fondo al pasar el mouse */
+}
+
 
 .footer {
     border-top: 3px solid #000000;

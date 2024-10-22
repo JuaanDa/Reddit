@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 @Named("postCreateView")
@@ -31,6 +32,7 @@ public class PostCreateView implements Serializable {
 
 
     public String createPost(){
+
         postsService.savePosts(postsDTO);
 
         return null;
