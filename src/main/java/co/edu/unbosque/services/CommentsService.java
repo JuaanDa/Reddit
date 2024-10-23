@@ -29,6 +29,8 @@ public class CommentsService implements CommentsServiceInterface {
     @Override
     public void saveComments(CommentsDTO commentsDTO) {
         Comments comments = dataMapper.map(commentsDTO, Comments.class);
+        daoComments.save(comments);
+        dataMapper.map(commentsDTO, Comments.class);
     }
 
     @Override

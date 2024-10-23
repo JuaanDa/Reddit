@@ -25,5 +25,6 @@ public class PostsDAO implements DAO<Posts, Integer> {
 
     @Override
     public List<Posts> findAll() {
-        return em.createNamedQuery("Posts.findAll", Posts.class).getResultList();    }
+        return em.createNamedQuery("Posts.findAll", Posts.class).getResultList();
+    }
 }

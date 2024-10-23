@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Posts")
+    @Table(name = "Posts")
 
 @NamedQueries(
-        @NamedQuery(name="Posts.findAll", query="SELECT e FROM Posts e")
+        @NamedQuery(name="Posts.findAll", query="SELECT p FROM Posts p")
 )
 public class Posts {
 

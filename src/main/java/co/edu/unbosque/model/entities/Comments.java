@@ -7,9 +7,9 @@ import java.sql.Timestamp;
 @Entity
     @Table(name = "Comments")
 @NamedQueries(
-        @NamedQuery(name="Comments.findAll", query="SELECT e FROM Comments e")
+        @NamedQuery(name="Comments.findAll", query="SELECT c FROM Comments c")
 )
-    public class Comments {
+public class Comments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

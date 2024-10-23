@@ -8,22 +8,15 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
-@Named("commentView")
+@Named("addCommentsView")
 @RequestScoped
-public class CommentView implements Serializable {
-
+public class AddCommentsView implements Serializable {
+    private CommentsDTO commentsDTO;
     @Inject
     private CommentsService commentsService;
 
-    private CommentsDTO commentsDTO;
-    public CommentView(){
+    public AddCommentsView() {
         commentsDTO = new CommentsDTO();
-    }
-    public void addComment(int postId) {
-        // Set the postId in newComment before saving
-        commentsDTO.setPostId(postId);
-        commentsService.saveComments(commentsDTO);
-        commentsDTO = new CommentsDTO(); // Reset after saving
     }
 
     public CommentsDTO getCommentsDTO() {
@@ -33,4 +26,10 @@ public class CommentView implements Serializable {
     public void setCommentsDTO(CommentsDTO commentsDTO) {
         this.commentsDTO = commentsDTO;
     }
+
+    public String newComment(){
+        commentsService.saveComments(commentsDTO);
+        return null;
+    }
+
 }
