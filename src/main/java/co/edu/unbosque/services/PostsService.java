@@ -14,7 +14,7 @@ import java.util.List;
 import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 @Named
 @RequestScoped
-public class PostsService implements PostsServiceInterface{
+public class PostsService implements PostsServiceInterface {
 
     @Inject
     private DAO<Posts, Integer> daoPosts;
@@ -47,4 +47,6 @@ public class PostsService implements PostsServiceInterface{
         }
         return postsDTOs;
     }
+
+
 }

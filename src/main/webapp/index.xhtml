@@ -13,15 +13,12 @@
     <link rel="icon" type="icon" href="images/icon.png"/>
 </h:head>
 <h:body>
-
     <div class="header">
         <div class="logo">
             <a href="index.xhtml"><img src="images/imagotipo.png" alt="logo"/></a>
         </div>
     </div>
     <div class="container">
-
-        <h:form>
             <p:panel header="Posts" toggleable="true">
                 <p:dataList value="#{postView.posts}" var="post" itemStyleClass="custom-post-item">
                     <p:outputPanel>
@@ -31,7 +28,6 @@
                     </p:outputPanel>
                 </p:dataList>
             </p:panel>
-        </h:form>
 
         <h:form>
             <p:dialog id="viewPostDialog" widgetVar="viewPostDialog" header="DETALLES DEL POST" modal="true" closable="true" width="800" height="600">
@@ -63,12 +59,20 @@
 
                         <h:outputLabel value="Contenido:" />
                         <p:inputTextarea id="content" value="#{addCommentsView.commentsDTO.content}" />
+<!--
+                        <p:commandButton
+                                icon="pi pi-thumbs-up"
+                                value=""
+                                action="#{addCommentsView.commentsDTO.postId}"
+                        >
 
+                        </p:commandButton>-->
                         <h:outputLabel value="Likes:" />
                         <p:inputText id="likes" value="#{addCommentsView.commentsDTO.likes}" />
 
                         <h:outputLabel value="Post ID:" />
                         <p:inputText id="post_id" value="#{addCommentsView.commentsDTO.postId}" />
+
 
                         <p:commandButton value="Guardar" action="#{addCommentsView.newComment()}" oncomplete="location.reload();" />
                     </h:panelGrid>
