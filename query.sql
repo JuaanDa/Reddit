@@ -4,20 +4,20 @@ use Reddit;
 
 create table Posts (
  id INT NOT NULL AUTO_INCREMENT,
- title VARCHAR(50),
- autor VARCHAR(50),
- content VARCHAR(250),
- post_date TIMESTAMP,
+ title VARCHAR(50) NOT NULL,
+ autor VARCHAR(50) NOT NULL,
+ content VARCHAR(255) NOT NULL,
+ post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
  PRIMARY KEY (id)
 );
 create table Comments (
  id INT NOT NULL AUTO_INCREMENT,
- autor VARCHAR(50),
- content VARCHAR(250),
- comment_date TIMESTAMP,
- likes INT,
- post_id INT,
+ autor VARCHAR(50) NOT NULL,
+ content VARCHAR(250) NOT NULL,
+ comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ likes INT DEFAULT 0,
+ post_id INT NOT NULL,
  PRIMARY KEY (id),
  FOREIGN KEY (post_id) REFERENCES Posts(id)
 );
@@ -49,11 +49,11 @@ COMMIT;
 
 insert into
 Comments (
-    autor, content, likes, post_id
+    autor, content, post_id
 ) values
-("Ana", "Este post cambió mi vida, gracias.", 120, 1),
-("Carlos", "No entiendo nada, ¿puedes explicarlo mejor?", 45, 1),
-("Sofía", "¿Alguien más probó esto y le funcionó?", 33, 1);
+("Ana", "Este post cambió mi vida, gracias.", 1),
+("Carlos", "No entiendo nada, ¿puedes explicarlo mejor?", 1),
+("Sofía", "¿Alguien más probó esto y le funcionó?", 1);
 
 /*select p.id, p.title, p.autor, p.post_date
 from Posts p

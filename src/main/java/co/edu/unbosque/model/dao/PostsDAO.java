@@ -13,9 +13,8 @@ public class PostsDAO implements DAO<Posts, Integer> {
     private EntityManager em;
 
     @Override
-    public Posts save(Posts entity) {
+    public void save(Posts entity) {
         em.persist(entity);
-        return entity;
     }
 
     @Override
@@ -27,4 +26,7 @@ public class PostsDAO implements DAO<Posts, Integer> {
     public List<Posts> findAll() {
         return em.createNamedQuery("Posts.findAll", Posts.class).getResultList();
     }
+
+    @Override
+    public void update(Posts entity) {}
 }

@@ -19,7 +19,8 @@ public class CommentsService implements CommentsServiceInterface {
 
     @Inject
     private DAO<Comments, Integer> daoComments;
-    private ModelMapper dataMapper;
+
+    private final ModelMapper dataMapper;
 
     public CommentsService() {
         dataMapper = new ModelMapper();
@@ -47,5 +48,14 @@ public class CommentsService implements CommentsServiceInterface {
             commentsDTOs.add(dataMapper.map(comment, CommentsDTO.class));
         }
         return commentsDTOs;
+    }
+
+    @Override
+    public void updateLikes(int commentId, int likes) {
+        Comments comment = daoComments.findById(commentId);
+        if (comment != null) {
+            comment.setLikes(likes + 1);
+            daoComments.update(comment);
+        }
     }
 }

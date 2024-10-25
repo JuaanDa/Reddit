@@ -16,9 +16,8 @@ public class CommentsDAO implements DAO<Comments,Integer> {
 
 
     @Override
-    public Comments save(Comments entity) {
+    public void save(Comments entity) {
         em.persist(entity);
-        return entity;
     }
 
     @Override
@@ -30,5 +29,8 @@ public class CommentsDAO implements DAO<Comments,Integer> {
     public List<Comments> findAll() {
         return em.createNamedQuery("Comments.findAll", Comments.class).getResultList();
     }
-    }
 
+    public void update(Comments entity) {
+        em.merge(entity);
+    }
+}

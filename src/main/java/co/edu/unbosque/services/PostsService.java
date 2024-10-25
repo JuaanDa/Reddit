@@ -50,15 +50,13 @@ public class PostsService implements PostsServiceInterface {
 
 
     public int getPostIdByTitle(String title) {
-        List<Posts> posts = daoPosts.findAll(); // Obtener todos los posts
+        List<Posts> posts = daoPosts.findAll();
         for (Posts post : posts) {
-
-            if (post.getTitle().equals(title)) { // Compara el título
-
-                return post.getId(); // Retorna el ID del post que coincide
+            if (post.getTitle().equals(title)) {
+                return post.getId();
             }
         }
-        return 1; // Retorna null si no se encuentra el post
+        return 1;
     }
 
 }

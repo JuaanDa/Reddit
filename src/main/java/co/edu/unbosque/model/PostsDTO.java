@@ -1,26 +1,24 @@
 package co.edu.unbosque.model;
 
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class PostsDTO {
-
     private int id;
-    private String title;
-    private String autor;
-    private String content;
-    private Timestamp date;
 
-    public PostsDTO() {
-    }
+    private String title, autor, content;
 
-    public PostsDTO(int id, String title, String autor, String content, Timestamp date) {
+    private LocalDateTime date;
+
+    public PostsDTO(int id, String title, String autor, String content, LocalDateTime date) {
         this.id = id;
         this.title = title;
         this.autor = autor;
         this.content = content;
         this.date = date;
     }
+
+    public PostsDTO() {}
 
     public int getId() {
         return id;
@@ -54,11 +52,11 @@ public class PostsDTO {
         this.content = content;
     }
 
-    public Timestamp getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
