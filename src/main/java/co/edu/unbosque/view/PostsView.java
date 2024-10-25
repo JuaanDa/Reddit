@@ -24,13 +24,14 @@ public class PostsView implements Serializable {
     @PostConstruct
     public void init() {
         posts = (ArrayList<PostsDTO>) postsService.getAllPosts();
+        selectedPost = new PostsDTO();
     }
     public PostsView() {
-        selectedPost = new PostsDTO();
     }
 
     public PostsDTO getSelectedPost() {
-        int title = postsService.getPostIdByTitle(GetTitle());
+       // System.out.println(getPosts(postsService.getPostIdByTitle(GetTitle())));
+        int title = postsService.getPostIdByTitle("Guía definitiva de memes");
         return postsService.getPosts(title);
     }
 
@@ -45,7 +46,12 @@ public class PostsView implements Serializable {
     }
 
     public String GetTitle() {
-        System.out.println(selectedPost.getTitle());
-        return selectedPost.getTitle();
+        for (PostsDTO post : posts) {
+            if (post.getTitle().equals(selectedPost.getTitle())) {
+                return post.getTitle();
+
+            }
+        }
+        return null;
     }
 }
