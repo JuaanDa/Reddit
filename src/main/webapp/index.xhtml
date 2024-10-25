@@ -19,73 +19,59 @@
         </div>
     </div>
     <div class="container">
-            <p:panel header="Posts" toggleable="true">
+        <p:panel header="Posts" toggleable="true" styleClass="my-post-panel">
                 <p:dataList value="#{postView.posts}" var="post" itemStyleClass="custom-post-item">
                     <p:outputPanel>
                         <p:commandLink value="#{post.title}"
                                        action="#{postView.setSelectedPost(post)}"
-                                       oncomplete="PF('viewPostDialog').show(); return false;"/>
+                                       oncomplete="PF('viewPostDialog').show(); return false;" style="color: black" />
                     </p:outputPanel>
+                    <h:outputLabel value="No se encontraron post." rendered="#{empty postView.posts}" />
+
                 </p:dataList>
-            </p:panel>
+            <p:commandButton value="Crear Publicación" icon="pi pi-pen-to-square"
+                             styleClass="ui-button-raised"
+                             onclick="PF('createPostDialog').show(); return false;"
+                             style="position: absolute; top: 200px; right: 40px; padding: 5px; color: #ffffff; background-color: #813a77; border: 1px solid #813a77;"/>
+        </p:panel>
 
         <h:form>
-            <p:dialog id="viewPostDialog" widgetVar="viewPostDialog" header="DETALLES DEL POST" modal="true" closable="true" width="800" height="600">
-                <h:panelGrid columns="2" style="width: 100%; height: 100%; text-align: center;">
+            <p:dialog id="viewPostDialog" widgetVar="viewPostDialog" header="DETALLES DEL POST" modal="true" closable="true" width="700" height="350">
+                <h:panelGrid columns="2" style="width: 100%; height: 100%; text-align: center; padding: 5px; ">
+                    <h:panelGrid columns="1" style="text-align: left; padding: 20px;">
+                        <h:outputText value="#{postView.selectedPost.title}" style="color: black; font-size: large; font-weight: bolder; "/>
 
-                    <h:panelGrid columns="1" style="padding-right: 20px; text-align: left;">
-                        <h:outputLabel value="Título:" />
-                        <h:outputText value="#{postView.selectedPost.title}" />
+                        <h:outputText value="Autor: #{postView.selectedPost.autor}" style="color: black; font-size: smaller; font-style: oblique;" />
 
-                        <h:outputLabel value="Autor:" />
-                        <h:outputText value="#{postView.selectedPost.autor}" />
-
-                        <h:outputLabel value="Contenido:" />
-                        <h:outputText value="#{postView.selectedPost.content}" />
+                        <h:outputText value="#{postView.selectedPost.content}" style="color: black; font-size: medium; margin-top: 40px"/>
                     </h:panelGrid>
 
-                    <h:panelGrid columns="1" style="border-left: 2px solid #ccc; padding-left: 20px; text-align: left;">
+                    <h:panelGrid columns="1" style="border-left: 2px solid #ccc; padding: 5px; text-align: left">
                         <h:outputLabel value="Comentarios:" />
-
-                        <p:dataList value="#{commentsView.comments}" var="comment" style="text-align: left; margin-bottom: 10px;">
-                            <h:outputText value="#{comment.autor}: #{comment.content}" style="display: block;" />
+                        <p:dataList value="#{commentsView.comments}" var="comment" style="text-align: left; margin-bottom: 5px; font-size: x-small">
+                            <h:outputText value="#{comment.autor}: #{comment.content}" />
                         </p:dataList>
-
                         <h:outputLabel value="No se encontraron registros." rendered="#{empty commentsView.comments}" />
 
-                        <h:outputLabel value="Nuevo Comentario:" />
-                        <h:outputLabel value="Autor:" />
+                        <h:outputLabel value="Agregar Comentario:" />
+                        <h:outputLabel value="Autor:" style="font-size: x-small" />
                         <p:inputText id="autor" value="#{addCommentsView.commentsDTO.autor}" />
 
-                        <h:outputLabel value="Contenido:" />
+                        <h:outputLabel value="Contenido:" style="font-size: x-small" />
                         <p:inputTextarea id="content" value="#{addCommentsView.commentsDTO.content}" />
-<!--
-                        <p:commandButton
-                                icon="pi pi-thumbs-up"
-                                value=""
-                                action="#{addCommentsView.commentsDTO.postId}"
-                        >
 
-                        </p:commandButton>-->
-                        <h:outputLabel value="Likes:" />
-                        <p:inputText id="likes" value="#{addCommentsView.commentsDTO.likes}" />
 
-                        <h:outputLabel value="Post ID:" />
+                        <h:outputLabel value="Post ID:"  style="font-size: x-small"/>
                         <p:inputText id="post_id" value="#{addCommentsView.commentsDTO.postId}" />
 
-
-                        <p:commandButton value="Guardar" action="#{addCommentsView.newComment()}" oncomplete="location.reload();" />
+                        <p:commandButton value="Comentar" action="#{addCommentsView.newComment()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C; border: 1px solid #2B7B8C; margin-top: 5px;" />
                     </h:panelGrid>
-
                 </h:panelGrid>
+
             </p:dialog>
         </h:form>
 
         <h:form>
-            <p:commandButton value="Crear Publicación" icon="pi pi-pen-to-square"
-                             styleClass="ui-button-raised"
-                             onclick="PF('createPostDialog').show(); return false;"
-                             style="position: absolute; bottom: 20px; right: 20px;" />
 
             <p:dialog header="Crear Publicación" widgetVar="createPostDialog" modal="true">
                 <h:panelGrid columns="2">
@@ -98,9 +84,9 @@
                     <h:outputLabel for="content" value="Contenido:" />
                     <p:inputTextarea id="content" value="#{postCreateView.postsDTO.content}" required="true" />
 
-                    <p:commandButton value="Guardar" action="#{postCreateView.createPost()}" oncomplete="location.reload();"/>
+                    <p:commandButton value="Guardar" action="#{postCreateView.createPost()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C;     border: 1px solid #2B7B8C;"/>
 
-                    <p:commandButton value="Cancelar" onclick="PF('createPostDialog').hide();" type="button" />
+                    <p:commandButton value="Cancelar" onclick="PF('createPostDialog').hide();" type="button" style="color: #ffffff; background-color: #2B7B8C;     border: 1px solid #2B7B8C;"/>
                 </h:panelGrid>
             </p:dialog>
         </h:form>
