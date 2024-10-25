@@ -1,20 +1,15 @@
 package co.edu.unbosque.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class CommentsDTO {
+    private int id, likes, postId;
 
-    private int id;
-    private String autor;
-    private String content;
-    private Timestamp date;
-    private int likes;
-    private int postId;
+    private String autor, content;
 
-    public CommentsDTO() {
-    }
+    private LocalDateTime date;
 
-    public CommentsDTO(int id, String autor, String content, Timestamp date, int likes, int postId) {
+    public CommentsDTO(int id, String autor, String content, LocalDateTime date, int likes, int postId) {
         this.id = id;
         this.autor = autor;
         this.content = content;
@@ -22,6 +17,8 @@ public class CommentsDTO {
         this.likes = likes;
         this.postId = postId;
     }
+
+    public CommentsDTO() {}
 
     public int getId() {
         return id;
@@ -47,11 +44,11 @@ public class CommentsDTO {
         this.content = content;
     }
 
-    public Timestamp getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

@@ -26,10 +26,10 @@ public class PostCreateView implements Serializable {
     public PostsDTO getPostsDTO() {
         return postsDTO;
     }
+
     public void setPostsDTO(PostsDTO postsDTO) {
         this.postsDTO = postsDTO;
     }
-
 
     public String createPost(){
 

@@ -28,11 +28,10 @@ public class CommentsView implements Serializable {
 
     }
 
-
     public void addComment() {
         newComment.setPostId(selectedPostId);
         commentsService.saveComments(newComment);
-        newComment = new CommentsDTO(); // Reset new comment
+        newComment = new CommentsDTO();
     }
 
     public List<CommentsDTO> getComments() {

@@ -34,15 +34,12 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-
-
 }
 
 .my-post-panel {
     background-color: #f9f9f9;
     padding: 26px;
 }
-
 
 .custom-post-item {
     font-size: smaller;
@@ -52,11 +49,7 @@ body {
     border: 1px solid #324a5e;
     padding: 10px;
     width: 350px;
-
-
-
 }
-
 
 .custom-post-item:hover {
     transform: translateX(15px);
@@ -71,6 +64,7 @@ body {
     font-weight: bold;
     text-decoration: none;
 }
+
 .text-title{
     color: red;
 }
@@ -118,6 +112,7 @@ textarea {
     align-items: center;
     height: 60px;
 }
+
 .footer p {
     margin: 0;
     text-align: center;

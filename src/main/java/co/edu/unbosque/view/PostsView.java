@@ -26,6 +26,7 @@ public class PostsView implements Serializable {
         posts = (ArrayList<PostsDTO>) postsService.getAllPosts();
         selectedPost = new PostsDTO();
     }
+
     public PostsView() {
     }
 
@@ -37,8 +38,6 @@ public class PostsView implements Serializable {
 
     public void setSelectedPost(PostsDTO selectedPost) {
         this.selectedPost = selectedPost;
-
-
     }
 
     public List<PostsDTO> getPosts() {

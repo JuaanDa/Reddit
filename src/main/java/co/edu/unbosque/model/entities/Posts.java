@@ -2,7 +2,7 @@ package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
     @Table(name = "Posts")
@@ -11,34 +11,32 @@ import java.sql.Timestamp;
         @NamedQuery(name="Posts.findAll", query="SELECT p FROM Posts p")
 )
 public class Posts {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="title", length = 50)
+    @Column(name="title", length = 50, nullable = false)
     private String title;
 
-    @Column(name="autor", length = 50)
+    @Column(name="autor", length = 50, nullable = false)
     private String autor;
 
-    @Column(name="content")
+    @Column(name="content", nullable = false)
     private String content;
 
-    @Column(name="post_date")
-    private Timestamp date;
+    @Column(name="post_date", columnDefinition = "TIMESTAMP")
+    private LocalDateTime date;
 
-    public Posts(){
 
-    }
-
-    public Posts(int id, String title, String autor, String content, Timestamp date) {
+    public Posts(int id, String title, String autor, String content, LocalDateTime date) {
         this.id = id;
         this.title = title;
         this.autor = autor;
         this.content = content;
         this.date = date;
     }
+
+    public Posts() {}
 
     public int getId() {
         return id;
@@ -50,33 +48,5 @@ public class Posts {
 
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
     }
 }
