@@ -14,31 +14,34 @@ public class Comments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "autor", nullable = false)
+    @Column(name = "autor")
     private String autor;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "content")
     private String content;
 
-    @Column(name = "comment_date", columnDefinition = "TIMESTAMP")
+    @Column(name = "comment_date")
     private LocalDateTime date;
 
-    @Column(name = "likes", columnDefinition = "INT DEFAULT 0")
-    private int likes;
+    @Column(name = "likes" )
+    private int likes = 0;
 
-    @Column(name = "post_id", nullable = false)
+    @Column(name = "post_id")
     private int postId;
+
 
     public Comments(int id, String autor, String content, LocalDateTime date, int likes, int postId) {
         this.id = id;
         this.autor = autor;
         this.content = content;
         this.date = date;
-        this.likes = likes;
+        this.likes = 0;
         this.postId = postId;
     }
 
-    public Comments() {}
+    public Comments() {
+    this.likes  = 0;
+    }
 
     public int getId() {
         return id;
@@ -48,8 +51,44 @@ public class Comments {
         this.id = id;
     }
 
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 }
 

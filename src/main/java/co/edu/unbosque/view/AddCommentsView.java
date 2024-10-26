@@ -10,6 +10,8 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Named("addCommentsView")
 @RequestScoped
@@ -39,12 +41,13 @@ public class AddCommentsView implements Serializable {
     }
 
     public String newComment(){
+
         commentsService.saveComments(commentsDTO);
         return null;
     }
 
     public PostsDTO getSelectedPost() {
-        int title = postsService.getPostIdByTitle("Domina JavaScript en 24 horas");
+        int title = postsService.getPostIdByTitle(selectedPost.getTitle());
         return postsService.getPosts(title);
     }
 

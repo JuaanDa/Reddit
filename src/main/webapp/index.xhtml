@@ -52,7 +52,7 @@
                     <h:panelGrid columns="1" style="border-left: 2px solid #ccc; padding: 5px; text-align: left">
                         <h:outputLabel value="Comentarios:" />
                         <p:dataList value="#{commentsView.comments}" var="comment" style="text-align: left; margin-bottom: 5px; font-size: x-small">
-                            <h:outputText value="#{comment.autor}: #{comment.content}" />
+                            <h:outputText value="#{comment.autor}: #{comment.content}: #{comment.date}" />
                             <p:commandButton value="#{comment.likes}"
                                              icon="pi pi-thumbs-up"
                                              action="#{commentsService.updateLikes(comment.id, comment.likes)}"
@@ -62,15 +62,17 @@
 
                         <h:outputLabel value="Agregar Comentario:" />
                         <h:outputLabel value="Autor:" style="font-size: x-small" />
-                        <p:inputText id="autor" value="#{addCommentsView.commentsDTO.autor}" />
+                        <p:inputText id="autor" value="#{addCommentsView.commentsDTO.autor}" required="true"/>
 
                         <h:outputLabel value="Contenido:" style="font-size: x-small" />
-                        <p:inputTextarea id="content" value="#{addCommentsView.commentsDTO.content}" />
+                        <p:inputTextarea id="content" value="#{addCommentsView.commentsDTO.content}" required="true"/>
 
 
                         <h:outputLabel value="Post " style="font-size: x-small" />
-                        <p:inputText id="post_id" value="#{addCommentsView.commentsDTO.postId}" />
+                        <p:inputText id="post_id" value="#{addCommentsView.commentsDTO.postId}" required="true" />
 
+                        <h:outputLabel for="date" value="Fecha:" />
+                        <p:calendar id="date" value="#{addCommentsView.commentsDTO.date}" required="true" />
 
                         <p:commandButton value="Comentar" action="#{addCommentsView.newComment()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C; border: 1px solid #2B7B8C; margin-top: 5px;" />
                     </h:panelGrid>

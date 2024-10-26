@@ -30,8 +30,7 @@ public class PostsView implements Serializable {
     }
 
     public PostsDTO getSelectedPost() {
-       // System.out.println(getPosts(postsService.getPostIdByTitle(GetTitle())));
-        int title = postsService.getPostIdByTitle(selectedPost.getTitle());
+        int title = postsService.getPostIdByTitle(GetTitle());
         return postsService.getPosts(title);
     }
 
