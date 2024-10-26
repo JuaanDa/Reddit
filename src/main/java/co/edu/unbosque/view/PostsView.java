@@ -26,18 +26,19 @@ public class PostsView implements Serializable {
         posts = (ArrayList<PostsDTO>) postsService.getAllPosts();
         selectedPost = new PostsDTO();
     }
-
     public PostsView() {
     }
 
     public PostsDTO getSelectedPost() {
        // System.out.println(getPosts(postsService.getPostIdByTitle(GetTitle())));
-        int title = postsService.getPostIdByTitle("Guía definitiva de memes");
+        int title = postsService.getPostIdByTitle(selectedPost.getTitle());
         return postsService.getPosts(title);
     }
 
     public void setSelectedPost(PostsDTO selectedPost) {
         this.selectedPost = selectedPost;
+
+
     }
 
     public List<PostsDTO> getPosts() {

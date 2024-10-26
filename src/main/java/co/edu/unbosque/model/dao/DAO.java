@@ -10,4 +10,6 @@ public interface DAO<T,K>{
     List<T> findAll();
 
     void update(T entity);
+
+    List<T> getCommentsByPostId(int id );
 }

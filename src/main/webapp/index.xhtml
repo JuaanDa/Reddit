@@ -20,6 +20,7 @@
     </div>
     <div class="container">
         <p:panel header="Posts" toggleable="true" styleClass="my-post-panel">
+
                 <p:dataList value="#{postView.posts}" var="post" itemStyleClass="custom-post-item">
                     <p:outputPanel>
                         <p:commandLink value="#{post.title}"
@@ -29,6 +30,7 @@
                     <h:outputLabel value="No se encontraron post." rendered="#{empty postView.posts}" />
 
                 </p:dataList>
+
             <p:commandButton value="Crear Publicación" icon="pi pi-pen-to-square"
                              styleClass="ui-button-raised"
                              onclick="PF('createPostDialog').show(); return false;"
@@ -36,7 +38,7 @@
         </p:panel>
 
         <h:form>
-            <p:dialog id="viewPostDialog" widgetVar="viewPostDialog" header="DETALLES DEL POST" modal="true" closable="true" width="700" height="350">
+            <p:dialog id="viewPostDialog" widgetVar="viewPostDialog" header="DETALLES DEL POST" modal="true" closable="true" width="900" height="350">
                 <h:panelGrid columns="2" style="width: 100%; height: 100%; text-align: center; padding: 5px; ">
                     <h:panelGrid columns="1" style="text-align: left; padding: 20px;">
                         <h:outputText value="#{postView.selectedPost.title}" style="color: black; font-size: large; font-weight: bolder; "/>
@@ -44,12 +46,17 @@
                         <h:outputText value="Autor: #{postView.selectedPost.autor}" style="color: black; font-size: smaller; font-style: oblique;" />
 
                         <h:outputText value="#{postView.selectedPost.content}" style="color: black; font-size: medium; margin-top: 40px"/>
+                        <h:outputText value="#{postView.selectedPost.date}" />
                     </h:panelGrid>
 
                     <h:panelGrid columns="1" style="border-left: 2px solid #ccc; padding: 5px; text-align: left">
                         <h:outputLabel value="Comentarios:" />
                         <p:dataList value="#{commentsView.comments}" var="comment" style="text-align: left; margin-bottom: 5px; font-size: x-small">
                             <h:outputText value="#{comment.autor}: #{comment.content}" />
+                            <p:commandButton value="#{comment.likes}"
+                                             icon="pi pi-thumbs-up"
+                                             action="#{commentsService.updateLikes(comment.id, comment.likes)}"
+                                             style=" text-align: center; justify-content: center; font-size:xx-small; background-color: #813a77; border: 1px solid #813a77" oncomplete="location.reload()"/>
                         </p:dataList>
                         <h:outputLabel value="No se encontraron registros." rendered="#{empty commentsView.comments}" />
 
@@ -61,8 +68,9 @@
                         <p:inputTextarea id="content" value="#{addCommentsView.commentsDTO.content}" />
 
 
-                        <h:outputLabel value="Post ID:"  style="font-size: x-small"/>
+                        <h:outputLabel value="Post " style="font-size: x-small" />
                         <p:inputText id="post_id" value="#{addCommentsView.commentsDTO.postId}" />
+
 
                         <p:commandButton value="Comentar" action="#{addCommentsView.newComment()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C; border: 1px solid #2B7B8C; margin-top: 5px;" />
                     </h:panelGrid>
@@ -83,6 +91,9 @@
 
                     <h:outputLabel for="content" value="Contenido:" />
                     <p:inputTextarea id="content" value="#{postCreateView.postsDTO.content}" required="true" />
+
+                    <h:outputLabel for="date" value="Fecha:" />
+                    <p:calendar id="date" value="#{postCreateView.postsDTO.date}" required="true" />
 
                     <p:commandButton value="Guardar" action="#{postCreateView.createPost()}" oncomplete="location.reload();" style="color: #ffffff; background-color: #2B7B8C;     border: 1px solid #2B7B8C;"/>
 

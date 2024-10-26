@@ -58,4 +58,13 @@ public class CommentsService implements CommentsServiceInterface {
             daoComments.update(comment);
         }
     }
+
+
+    public void getCommentsByPostId(int commentId){
+        Comments comment = daoComments.findById(commentId);
+        dataMapper.map(comment, Comments.class);
+        daoComments.getCommentsByPostId(commentId);
+
+
+    }
 }

@@ -5,7 +5,7 @@ import co.edu.unbosque.model.entities.Comments;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-
+import jakarta.persistence.TypedQuery;
 
 
 @Stateless
@@ -33,4 +33,14 @@ public class CommentsDAO implements DAO<Comments,Integer> {
     public void update(Comments entity) {
         em.merge(entity);
     }
+
+
+
+    public List<Comments> getCommentsByPostId(int id) {
+        TypedQuery<Comments> query = em.createNamedQuery("Post.findCommentsByPostId", Comments.class);
+        query.setParameter("postId", id);
+        return query.getResultList();
+    }
+
+
 }

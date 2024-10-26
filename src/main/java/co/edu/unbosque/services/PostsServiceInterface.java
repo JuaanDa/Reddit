@@ -10,5 +10,4 @@ public interface PostsServiceInterface {
     PostsDTO getPosts (int id);
 
     List<PostsDTO> getAllPosts ();
-
 }

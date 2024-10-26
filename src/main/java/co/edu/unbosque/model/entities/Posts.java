@@ -1,15 +1,16 @@
 package co.edu.unbosque.model.entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
     @Table(name = "Posts")
 
-@NamedQueries(
+@NamedQueries({
+        @NamedQuery(name = "Post.findCommentsByPostId", query = "SELECT c FROM Comments c WHERE c.postId = :postId"),
         @NamedQuery(name="Posts.findAll", query="SELECT p FROM Posts p")
-)
+
+})
 public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

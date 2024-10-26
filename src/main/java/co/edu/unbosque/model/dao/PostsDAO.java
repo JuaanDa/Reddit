@@ -1,10 +1,13 @@
 package co.edu.unbosque.model.dao;
 
 import java.util.List;
+
+import co.edu.unbosque.model.entities.Comments;
 import co.edu.unbosque.model.entities.Posts;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 @Stateless
 public class PostsDAO implements DAO<Posts, Integer> {
@@ -29,4 +32,11 @@ public class PostsDAO implements DAO<Posts, Integer> {
 
     @Override
     public void update(Posts entity) {}
+
+    @Override
+    public List<Posts> getCommentsByPostId(int id) {
+        return List.of();
+    }
+
+
 }

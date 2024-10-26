@@ -59,4 +59,14 @@ public class PostsService implements PostsServiceInterface {
         return 1;
     }
 
+    public List<Posts> getPost(int id){
+        for (Posts post : daoPosts.findAll()) {
+            if (post.getId() == id) {
+                dataMapper.map(post, Posts.class);
+            }
+        }
+        return  daoPosts.getCommentsByPostId(id);
+
+    }
+
 }

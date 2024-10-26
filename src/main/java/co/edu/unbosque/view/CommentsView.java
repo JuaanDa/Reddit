@@ -49,4 +49,12 @@ public class CommentsView implements Serializable {
     public void setNewComment(CommentsDTO newComment) {
         this.newComment = newComment;
     }
+
+    public void updateComment() {
+        newComment = getNewComment();
+        commentsService.updateLikes(newComment.getId(), newComment.getLikes());
+    }
+    public void getCommentsByPostid(){
+        commentsService.getCommentsByPostId(selectedPostId);
+    }
 }
